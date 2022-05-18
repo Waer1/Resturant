@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Cart from "./Component/Cart/Cart";
+import Header from "./Component/Layout/Header/Header"
+import Meals from "./Component/Meals/Meals";
+import CartRrovider, { Layprovider } from "./Store/Cart-provider";
+import { useContext } from "react";
+import {cartlay} from "./Store/Card-Context"
+
+
 
 function App() {
+  const isOpen = useContext(cartlay);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <frameElement>
+      
+      <CartRrovider >
+
+          { isOpen.isOpen && <Cart /> }
+          <Header />
+          <main >
+            <Meals />
+          </main>
+
+      </CartRrovider>
+
+    </frameElement>
   );
 }
 
